@@ -1,3 +1,4 @@
+/* resetting all browser styles */
 * {
   margin: 0;
   padding: 0;
@@ -9,6 +10,8 @@ a {
   text-decoration: inherit;
 }
 
+/* always making the document fit the entire page (100vh -> 100% viewport height) */
+/* setting the bg-color and text color, as well as the font size and type */
 html, body {
   height: 100%;
   min-height: 100vh;
@@ -18,15 +21,18 @@ html, body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* make the body into a flexbox... */
 body {
   display: flex;
   flex-direction: column;
 }
 
+/* ...so that the main can be "stretched" to at least fill the area between the header and footer */
 main {
   flex-grow: 1;
 }
 
+/* giving all sections a max width and (horizontally) centering them on the page */
 header, main, footer {
   width: 100%;
   max-width: 56rem;
@@ -34,12 +40,14 @@ header, main, footer {
   padding: 1rem;
 }
 
+/* BEGIN: header styles */
 header {
   background-color: #d4d4d4;
   border-radius: .5rem;
   margin-top: .5rem;
 }
 
+/* give the logo a background, round its corners, and cast a shadow */
 header > img {
   width: 100%;
   height: auto;
@@ -49,45 +57,53 @@ header > img {
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
+/* seperating the nav from the logo */
 header > nav {
   margin-top: .5rem;
 }
 
+/* make the nav items side by side and space them evenly */
 header > nav > ul {
   display: flex;
   list-style-type: none;
   justify-content: space-around;
 }
 
+/* give the nav items some space and set their text color */
 header > nav > ul > li {
   padding: .25rem .5rem;
   border-radius: .25rem;
   color: #525252;
-  position: relative;
+  position: relative; /* this is needed for the :after pseudo-element */
   z-index: +1;
-  transition: color 200ms ease;
+  transition: color 200ms ease; /* transition the color */
 }
 
+/* change color on hover */
 header > nav > ul > li:hover {
   color: #e5e5e5;
 }
 
+/* use the :after pseudo-element for the underline */
 header > nav > ul > li:after {
-  content: "";
-  position: absolute;
+  content: ""; /* this will "enable" the pseudo */
+  position: absolute; /* position the element absolutely, depending on the last parent that has "relative" set */
   bottom: 0;
   left: 0;
   right: 0;
   background-color: #525252;
-  top: calc(100% - .1rem);
-  z-index: -1;
-  transition: top 200ms ease;
+  top: calc(100% - .1rem); /* 100% would be at the bottom, giving this element no height */
+  z-index: -1; /* the element would otherwise appear on top of the text */
+  transition: top 200ms ease; /* transition the "top" property */
 }
 
+/* make the pseudo full size if the parent is hovered */
 header > nav > ul > li:hover:after {
   top: 0;
 }
+/* END: header styles */
 
+/* BEGIN: footer styles */
 footer {
   display: flex;
   justify-content: space-between;
@@ -102,7 +118,9 @@ footer a {
 footer a:hover {
   color: #d4d4d4;
 }
+/* END: footer styles */
 
+/* BEGIN: main styles */
 main {
   display: flex;
   flex-direction: column;
@@ -114,21 +132,26 @@ main img {
   height: auto;
   display: block;
 }
+/* END: main styles */
 
+/* rounding an element */
 .rounded {
   border-radius: 1rem;
 }
 
+/* giving an element half the size it can fit and centering it */
 .half-size {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
 }
 
+/* centering the text of an element */
 .text-centered {
   text-align: center;
 }
 
+/* removing the dot (·) from the imprint list */
 ul.imprint {
   list-style: none;
 }
