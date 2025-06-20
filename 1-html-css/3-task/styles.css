@@ -1,0 +1,135 @@
+/* Baseline styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+html, body {
+  height: 100%;
+  min-height: 100vh;
+  background-color: #262626;
+  color: #f5f5f5;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1rem;
+}
+
+body > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Ping animaition */
+
+#ping {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+}
+
+#ping > span {
+  background-color: #22c55e;
+  width: .75rem;
+  height: .75rem;
+  display: block;
+  border-radius: 100%;
+  position: relative;
+}
+
+#ping > span:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #22c55e;
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(100%);
+  animation: ping 1s ease-out infinite;
+}
+
+@keyframes ping {
+  from {
+    opacity: .75;
+    transform: scale(100%);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(200%);
+  }
+}
+
+/* Rainbow text animation */
+
+#rainbow-text {
+  color: #ffaaaa;
+  animation: rainbow-text 1s linear infinite;
+}
+
+@keyframes rainbow-text {
+  from {
+    filter: hue-rotate(0deg);
+  }
+
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* Loader animation */
+
+#loader {
+  display: block;
+  width: 5rem;
+  height: .75rem;
+  position: relative;
+}
+
+#loader > span {
+  display: block;
+  width: .75rem;
+  height: .75rem;
+  background-color: #38bdf8;
+  border-radius: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  animation:
+    loader-position 1s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate,
+    loader-stretch .5s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
+}
+
+@keyframes loader-position {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: calc(100% - .75rem);
+  }
+}
+
+@keyframes loader-stretch {
+  from {
+    transform: scaleX(100%);
+  }
+
+  to {
+    transform: scaleX(125%);
+  }
+}
